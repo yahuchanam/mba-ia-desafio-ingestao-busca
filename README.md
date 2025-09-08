@@ -42,6 +42,17 @@ python src/ingest.py
 
 O script irá ler o caminho do PDF a partir da variável `PDF_PATH` no seu arquivo `.env`. Se não estiver definida, ele usará o arquivo `document.pdf` na raiz do projeto como padrão.
 
+## Executando o CLI
+
+Para executar o CLI, utilize o seguinte comando:
+
+```bash
+python src/chat.py 
+```
+
+Após isso faça suas perguntas relacionadas ao PDF que foi feita a ingestão.
+Para sair basta digitar `exit` ou `quit`.
+
 ## Executando os Testes Unitários
 
 Para executar os testes unitários e garantir que tudo está funcionando como esperado, utilize o seguinte comando:
