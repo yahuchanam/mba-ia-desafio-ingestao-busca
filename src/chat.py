@@ -1,13 +1,21 @@
-from search import search_prompt
+from search import SearchManager
+from utils.load_env import EnvManager
 
 def main():
-    chain = search_prompt()
+	EnvManager.load_env()
+	search_manager = SearchManager()
+	
+	while True:
+		try:
+			question = input("PERGUNTA: ")
+			if question.lower() in ["exit", "quit"]:
+					break
+			
+			response = search_manager.search_prompt(question)
+			print(f"RESPOSTA: {response}\n")
 
-    if not chain:
-        print("Não foi possível iniciar o chat. Verifique os erros de inicialização.")
-        return
-    
-    pass
+		except (EOFError, KeyboardInterrupt):
+			break
 
 if __name__ == "__main__":
-    main()
+	main()

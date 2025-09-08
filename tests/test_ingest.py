@@ -1,11 +1,11 @@
 
 import unittest
 from unittest.mock import patch, MagicMock
-from src.ingest import main as ingest_pdf
+from src.ingest import ingest_pdf
 
 class TestIngestPdf(unittest.TestCase):
 
-    @patch('src.ingest.load_env')
+    @patch('src.ingest.EnvManager.load_env')
     @patch('src.ingest.DocumentSplit')
     @patch('src.ingest.VectorDBManager')
     def test_ingest_pdf(self, mock_vector_db_manager, mock_document_split, mock_load_env):

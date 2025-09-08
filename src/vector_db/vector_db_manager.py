@@ -13,6 +13,7 @@ class VectorDBManager:
   """
   def __init__(self):
     self._strategy: EmbeddingStrategy = self._select_strategy()
+    self.store = self._get_store()
 
   def _select_strategy(self) -> EmbeddingStrategy:
     """
@@ -24,23 +25,34 @@ class VectorDBManager:
     
     return GoogleEmbeddingStrategy()
 
-  def save(self, enriched: list[Document]):
+  def _get_store(self):
     """
-    Salva os documentos enriquecidos no banco de dados vetorial.
-    """    
+    Retorna o retriever para busca de documentos.
+    """
     embeddings = self._strategy.get_embeddings()
     
     collection_name = os.getenv("PG_VECTOR_COLLECTION_NAME")
     connection_url = os.getenv("DATABASE_URL")
 
-    store = PGVector(
+    return PGVector(
       embeddings=embeddings,
       collection_name=collection_name,
       connection=connection_url,
-      use_jsonb=True,
+      use_jsonb=True
     )
-    
-    ids = [f"doc-{i}" for i in range(len(enriched))]
 
-    store.add_documents(documents=enriched, ids=ids)
-    print(f"✅ Documentos salvos com sucesso na coleção '{collection_name}'.")
+  def save(self, enriched: list[Document]):
+    """
+    Salva os documentos enriquecidos no banco de dados vetorial.
+    """    
+    ids = [f"doc-{i}" for i in range(len(enriched))]
+    self.store.add_documents(documents=enriched, ids=ids)
+    print(f"✅ Documentos salvos com sucesso na coleção '{os.getenv('PG_VECTOR_COLLECTION_NAME')}'.")
+
+  def query(self, query: str, k: int = 10) -> list[Document]:
+    """
+    Busca por documentos relevantes no banco vetorial.
+    """
+    results = self.store.similarity_search_with_score(query, k=k)
+    return [doc for doc, _ in results]
+  

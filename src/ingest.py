@@ -1,14 +1,14 @@
 import os
 
 from utils.document_split import DocumentSplit
-from utils.load_env import load_env
+from utils.load_env import EnvManager
 from vector_db.vector_db_manager import VectorDBManager
 
-def main():
+def ingest_pdf():
     """
     Função principal para ingestão do PDF.
     """
-    load_env()
+    EnvManager.load_env()
     pdf_path = os.getenv("PDF_PATH") or "./document.pdf"
     doc_split = DocumentSplit(pdf_path)
     chunks = doc_split.split_chunks()
@@ -16,4 +16,4 @@ def main():
     vector_db_manager.save(chunks)
 
 if __name__ == "__main__":
-    main()
+    ingest_pdf()
