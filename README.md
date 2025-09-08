@@ -1,6 +1,35 @@
 # Desafio MBA Engenharia de Software com IA - Full Cycle
 
-Descreva abaixo como executar a sua solução.
+## Objetivo
+
+Você deve entregar um software capaz de:
+
+Ingestão: Ler um arquivo PDF e salvar suas informações em um banco de dados PostgreSQL com extensão pgVector.
+Busca: Permitir que o usuário faça perguntas via linha de comando (CLI) e receba respostas baseadas apenas no conteúdo do PDF.
+
+### Exemplo no CLI
+
+#### Faça sua pergunta:
+
+```bash
+PERGUNTA: Qual o faturamento da empresa SuperTechIABrazil?
+RESPOSTA: O faturamento foi de 10 milhões de reais.
+```
+
+#### Perguntas fora do contexto:
+
+```bash
+PERGUNTA: Quantos clientes temos em 2024?
+RESPOSTA: Não tenho informações necessárias para responder sua pergunta.
+```
+
+## Pré-requisitos
+
+Antes de começar, garanta que você tenha as seguintes ferramentas instaladas em seu sistema:
+
+-   Python 3.10+
+-   Docker
+-   Docker Compose
 
 ## Pré-requisitos
 
