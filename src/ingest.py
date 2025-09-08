@@ -4,7 +4,7 @@ from utils.document_split import DocumentSplit
 from utils.load_env import load_env
 from vector_db.vector_db_manager import VectorDBManager
 
-def ingest_pdf():
+def main():
     """
     Função principal para ingestão do PDF.
     """
@@ -16,4 +16,4 @@ def ingest_pdf():
     vector_db_manager.save(chunks)
 
 if __name__ == "__main__":
-    ingest_pdf()
+    main()

@@ -1,7 +1,7 @@
 
 import unittest
 from unittest.mock import patch, MagicMock
-from src.ingest import ingest_pdf
+from src.ingest import main as ingest_pdf
 
 class TestIngestPdf(unittest.TestCase):
 
