@@ -2,6 +2,14 @@
 
 Descreva abaixo como executar a sua solução.
 
+## Pré-requisitos
+
+Antes de começar, garanta que você tenha as seguintes ferramentas instaladas em seu sistema:
+
+-   Python 3.10+
+-   Docker
+-   Docker Compose
+
 ## Configuração do Ambiente
 
 Antes de executar a aplicação, você precisa configurar as variáveis de ambiente.
@@ -20,9 +28,33 @@ Antes de executar a aplicação, você precisa configurar as variáveis de ambie
 
 ## Instale as dependências
 
+### Crie e ative um ambiente virtual
+
 ```bash
 python3 -m venv venv
+```
+
+### No Linux ou macOS:
+
+```bash
 source venv/bin/activate
+```
+
+### No Windows (PowerShell):
+
+```bash
+.\venv\Scripts\Activate.ps1
+```
+
+### Ou no Windows (Command Prompt):
+
+```bash
+.\venv\Scripts\activate.bat
+```
+
+### Instale as dependências
+
+```bash
 pip install -r requirements.txt
 ```
 
