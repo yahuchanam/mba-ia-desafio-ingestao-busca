@@ -24,7 +24,13 @@ Antes de executar a aplicação, você precisa configurar as variáveis de ambie
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-````
+```
+
+## Suba o container Docker com o PGVector
+
+```bash
+docker compose up -d
+```
 
 ## Executando a Ingestão de Documentos
 
