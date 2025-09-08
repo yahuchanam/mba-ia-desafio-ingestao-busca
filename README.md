@@ -31,14 +31,6 @@ Antes de começar, garanta que você tenha as seguintes ferramentas instaladas e
 -   Docker
 -   Docker Compose
 
-## Pré-requisitos
-
-Antes de começar, garanta que você tenha as seguintes ferramentas instaladas em seu sistema:
-
--   Python 3.10+
--   Docker
--   Docker Compose
-
 ## Configuração do Ambiente
 
 Antes de executar a aplicação, você precisa configurar as variáveis de ambiente.
