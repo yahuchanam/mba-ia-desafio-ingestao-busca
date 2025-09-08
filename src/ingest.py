@@ -1,13 +1,19 @@
 import os
-from dotenv import load_dotenv
 
-load_dotenv()
-
-PDF_PATH = os.getenv("PDF_PATH")
+from utils.document_split import DocumentSplit
+from utils.load_env import load_env
+from vector_db.vector_db_manager import VectorDBManager
 
 def ingest_pdf():
-    pass
-
+    """
+    Função principal para ingestão do PDF.
+    """
+    load_env()
+    pdf_path = os.getenv("PDF_PATH") or "./document.pdf"
+    doc_split = DocumentSplit(pdf_path)
+    chunks = doc_split.split_chunks()
+    vector_db_manager = VectorDBManager()
+    vector_db_manager.save(chunks)
 
 if __name__ == "__main__":
     ingest_pdf()
